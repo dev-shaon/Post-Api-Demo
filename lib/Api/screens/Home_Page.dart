@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(height: 30),
-          
+
               ElevatedButton(
                 onPressed: () async {
                   final success = await auth.Submit(
@@ -99,14 +99,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       password: passController.text,
                       firstname: fristController.text,
                       lastname: lastController.text,
-                    )
+                    ),
                   );
-          
+
                   if (success) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text("User Posted Successfully")),
                     );
-                    
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => LogIn()),

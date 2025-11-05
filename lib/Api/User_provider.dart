@@ -8,26 +8,38 @@ class UserProvider extends ChangeNotifier {
   bool isLoading = false;
 
   Future<bool> Submit(UserModel user) async {
-    isLoading = true;
-    notifyListeners();
+    try {
+      isLoading = true;
+      notifyListeners();
 
-    final success = await _apiService.registerUser(user);
+      bool success = await _apiService.registerUser(user);
+      return success;
 
-    isLoading = false;
-    notifyListeners();
+    } catch (e) {
+      print("Submit error: $e");
+      return false;
 
-    return success;
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
   }
 
   Future<bool> loginUser(String username, String password) async {
-    isLoading = true;
-    notifyListeners();
+    try {
+      isLoading = true;
+      notifyListeners();
 
-    bool success = await _apiService.loginUser(username, password);
+      bool success = await _apiService.loginUser(username, password);
+      return success;
 
-    isLoading = false;
-    notifyListeners();
+    } catch (e) {
+      print("Login error: $e");
+      return false;
 
-    return success;
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
   }
 }
