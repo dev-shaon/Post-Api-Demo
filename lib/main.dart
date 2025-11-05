@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:post_api/Api/User_provider.dart';
-import 'package:post_api/Home_Page.dart';
+import 'package:post_api/Api/screens/Home_Page.dart';
 import 'package:provider/provider.dart';
 
 
@@ -8,7 +8,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
       ],
       child: const MyApp(),
     ),
